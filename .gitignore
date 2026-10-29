@@ -1,7 +1,10 @@
 *.[oa]
 *.dep
 .vscode
+.codebuddy
+docs
 linux*/
 lnInclude/
 backup/
+.validation/
 *~

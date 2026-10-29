@@ -102,7 +102,7 @@ void Foam::regionTypeList::reset(const regionProperties& rp)
     //- Add other types in needed..
     for (auto& typeI : regionTypes)
     {
-        modelTypes.appendUniq(typeI);
+        modelTypes.push_uniq(typeI);
     }
 
     label i = 0;
@@ -154,6 +154,18 @@ void Foam::regionTypeList::solve()
     forAll(*this, i)
     {
         this->operator[](i).solve();
+    }
+}
+
+
+void Foam::regionTypeList::solveElectric()
+{
+    forAll(*this, i)
+    {
+        if (this->operator[](i).type() == "electric")
+        {
+            this->operator[](i).solve();
+        }
     }
 }
 
