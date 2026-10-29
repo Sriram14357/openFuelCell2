@@ -202,7 +202,7 @@ void Foam::diffusivityModels::porousFSG::evaluate()
     forAll(cells_, i)
     {
         diff_[cells_[i]] =
-            Foam::pow(alpha[cells_[i]], 1.5)
+            Foam::pow(max(alpha[cells_[i]], scalar(0)), 1.5)
           * eps_/tau_/(1/diff_[cells_[i]] + 1/diffK[cells_[i]]);
             //eps_*diff_[cells_[i]]*diffK[cells_[i]]/
             //(tau_*(diff_[cells_[i]] + diffK[cells_[i]]));

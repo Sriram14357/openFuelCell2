@@ -189,7 +189,7 @@ void Foam::diffusivityModelList::correct
 
                         for (auto k : this->operator[](j).cells())
                         {
-                            if(this->operator[](j).diff()[k] != 0)
+                            if (this->operator[](j).diff()[k] > VSMALL)
                             {
                                 sum[k] += X[l][k]/this->operator[](j).diff()[k];
                             }
