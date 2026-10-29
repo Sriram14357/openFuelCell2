@@ -392,11 +392,9 @@ Foam::MultiComponentPhaseModel<BasePhaseModel>::dmdt() const
 
     scalarField& dmdt0 = dmdt.ref();
 
-    forAll(Y(), i)
+    for (auto& iDmdt : iDmdt_)
     {
-        volScalarField& Yi = const_cast<volScalarField&>(Y()[i]);
-
-        dmdt0 += this->R(Yi) & Yi;
+        dmdt0 += iDmdt;
     }
 
     return dmdt;
